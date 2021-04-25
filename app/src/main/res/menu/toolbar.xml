@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/no_see"
+        android:icon="@drawable/test_1"
+        android:title="不可见"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/msg"
+        android:icon="@drawable/test_2"
+        android:title="消息"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/count"
+        android:icon="@drawable/test_4"
+        android:title="统计"
+        app:showAsAction="never"/>
+</menu>
