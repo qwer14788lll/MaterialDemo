@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navCall"
+            android:icon="@drawable/test_15"
+            android:title="电话" />
+        <item
+            android:id="@+id/navDown"
+            android:icon="@drawable/test_9"
+            android:title="下载" />
+        <item
+            android:id="@+id/navBlock"
+            android:icon="@drawable/test_17"
+            android:title="锁" />
+        <item
+            android:id="@+id/navMsg"
+            android:icon="@drawable/test_3"
+            android:title="消息" />
+        <item
+            android:id="@+id/navLoad"
+            android:icon="@drawable/test_6"
+            android:title="定位" />
+    </group>
+</menu>
