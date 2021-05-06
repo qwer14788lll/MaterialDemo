@@ -11,7 +11,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.materialdemo.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +25,18 @@ class MainActivity : AppCompatActivity() {
     private var x2 = 0f
     private var y1 = 0f
     private var y2 = 0f
+
+    private val fruit = mutableListOf(
+        Fruit("草莓", R.drawable.fruit_1),
+        Fruit("苹果", R.drawable.fruit_2),
+        Fruit("樱桃", R.drawable.fruit_3),
+        Fruit("猕猴桃", R.drawable.fruit_4),
+        Fruit("橙子", R.drawable.fruit_5),
+        Fruit("柠檬", R.drawable.fruit_6),
+        Fruit("山竹", R.drawable.fruit_7)
+    )
+
+    private val fruitList = ArrayList<Fruit>()
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,6 +93,28 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             true
+        }
+
+        mBinding.fab.setOnClickListener { view ->
+            Snackbar.make(view, "你点击了悬浮按钮", Snackbar.LENGTH_LONG)
+                .setAction("我可以被点击") {
+                    Snackbar.make(it, "你点击了弹出式通知", Snackbar.LENGTH_SHORT).show()
+                }
+                .show()
+        }
+
+        initFruit()
+        //网格布局
+        mBinding.recyclerView.layoutManager = GridLayoutManager(this, 2)
+        mBinding.recyclerView.adapter = FruitAdapter(this, fruitList)
+    }
+
+    private fun initFruit() {
+        fruitList.clear()
+        repeat(50)
+        {
+            val index = (0 until fruit.size).random()
+            fruitList.add(fruit[index])
         }
     }
 
