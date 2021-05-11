@@ -1,6 +1,7 @@
 package com.example.materialdemo
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,7 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.materialdemo.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
+import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity() {
@@ -106,7 +108,24 @@ class MainActivity : AppCompatActivity() {
         initFruit()
         //网格布局
         mBinding.recyclerView.layoutManager = GridLayoutManager(this, 2)
-        mBinding.recyclerView.adapter = FruitAdapter(this, fruitList)
+        val adapter = FruitAdapter(this, fruitList)
+        mBinding.recyclerView.adapter = adapter
+
+        mBinding.switchMaterial.setColorSchemeResources(R.color.red)
+        mBinding.switchMaterial.setOnRefreshListener {
+            refresh(adapter)
+        }
+    }
+
+    private fun refresh(adapter: FruitAdapter) {
+        thread {
+            Thread.sleep(2000)
+            runOnUiThread {
+                initFruit()
+                adapter.notifyDataSetChanged()
+                mBinding.switchMaterial.isRefreshing = false
+            }
+        }
     }
 
     private fun initFruit() {
