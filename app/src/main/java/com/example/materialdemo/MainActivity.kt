@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        mBinding.constraintLayout.setOnTouchListener { _, motionEvent ->
+        mBinding.recyclerView.setOnTouchListener { _, motionEvent ->
             when (motionEvent.action) {
                 MotionEvent.ACTION_DOWN -> {
                     //当手指按下的时候
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-            true
+            false
         }
 
         mBinding.fab.setOnClickListener { view ->
