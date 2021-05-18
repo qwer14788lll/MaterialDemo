@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialDemo">
-        <activity android:name=".MainActivity" android:label="主界面">
+        <activity
+            android:name=".FruitActivity"
+            android:theme="@style/FruitActivityTheme" />
+        <activity
+            android:name=".MainActivity"
+            android:label="主界面">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

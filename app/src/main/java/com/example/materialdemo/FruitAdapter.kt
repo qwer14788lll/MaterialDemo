@@ -1,6 +1,7 @@
 package com.example.materialdemo
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +19,17 @@ class FruitAdapter(private val context: Context, private val fruitList: List<Fru
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.fruit_item, parent, false)
-        return ViewHolder(view)
+        val viewHolder = ViewHolder(view)
+        viewHolder.itemView.setOnClickListener {
+            val index = viewHolder.adapterPosition
+            val fruit = fruitList[index]
+            val intent = Intent(context, FruitActivity::class.java).apply {
+                putExtra(FruitActivity.FRUIT_NAME, fruit.name)
+                putExtra(FruitActivity.FRUIT_IMG_ID, fruit.imgId)
+            }
+            context.startActivity(intent)
+        }
+        return viewHolder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
